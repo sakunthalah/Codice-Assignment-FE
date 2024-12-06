@@ -1,0 +1,1 @@
+export {default as CdPageTitle } from "./page/CdPageTitle";

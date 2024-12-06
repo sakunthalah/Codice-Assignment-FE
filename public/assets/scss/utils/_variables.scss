@@ -1,0 +1,83 @@
+/**** Note ****/
+/* Use this file for style variables. */
+
+//Primary Dark colors
+$primary-font-color: #333333;
+$secondary-font-color: #545454;
+$primary-dark: #17375e;
+$primary-medium: #225b9b;
+$primary-light: #eaf7ff;
+$secondary-dark: #a1a1a1;
+$secondary-light: #f2f2f2;
+$tertiary-dark: #000000;
+
+//Background colors
+$bg-gray: #dbdbdb;
+
+//Accent Colors
+$primary-green: #6cab2c;
+$primary-red: #be1212;
+$bg-red: #ffdbdb;
+$bg-green: #e3f5dd;
+$bg-yellow: #fffadb;
+$footer-red: #ce2126;
+
+//Typography
+//font-size
+$base-font-size: 16px;
+$body-font-size: 1.2rem;
+$h1-font-size: 24px;
+$h2-font-size: 18px;
+$h3-font-size: 16px;
+$h4-font-size: 1.5rem;
+$h5-font-size: 1.3rem;
+$h6-font-size: 1.2rem;
+$p-font-size: 14px;
+$error-label-font-size: 1rem;
+
+//font-line-height
+$body-line-height: 1.5;
+$h1-line-height: 33px;
+$h2-line-height: 18px;
+$h3-line-height: 22px;
+
+//font-weight
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 800;
+
+//footer
+$footer-image-container-height: 41px;
+
+//Card
+$card-border-color: #c9cccc;
+$card-bg-color: white;
+
+//Button
+$primary-background-color: #293e6b;
+$disabled-background-color: #9c9d9d;
+$disabled-background-color-on-hover: #4f5050;
+$success-background-color: #177a4c;
+$success-background-color-on-hover: #0c5030;
+
+//Accordion
+$accordion-radius: 15px;
+$accordion-expanded-border-color: #3368db;
+$accordion-collapsed-border-color: #cacccc;
+$accordion-expanded-background-color: #d1d7df;
+$accordion-space-between-icon-and-header-text: 10px;
+$accordion-border-width: 2px;
+$accordion-body-border-width: 1px;
+$accordion-space-between-items: 14px;
+
+//Input
+$input-border-radius: 6px;
+
+//Grouped Components
+$grouped-component-border-radius: 200px;
+$grouped-component-select-width: 20%;
+
+
+$color-scarpa: #4c5667;
+$theme-body-sub-title-color: #959595;

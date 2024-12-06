@@ -1,0 +1,16 @@
+/**** Note ****/
+/* Use this file to import all the style sheets. */
+
+/**** Important ****/
+/* Be aware of import order. */
+
+//custom theme styles
+@import './custom.scss';
+
+// bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+//root theme styles
+@import './style.scss';
+
+

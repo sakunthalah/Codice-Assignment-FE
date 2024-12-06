@@ -1,0 +1,92 @@
+@import './utils/variables';
+
+
+/**** Note ****/
+/* Use this file for global(root level) styling changes.*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Avenir Next';
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  color: $primary-font-color;
+  font-size: $base-font-size;
+  line-height: $body-line-height;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-overflow-style: none;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+h1 {
+  font-size: $h1-font-size;
+  line-height: $h1-line-height;
+  font-weight: $font-weight-bold;
+}
+
+h2 {
+  font-size: $h2-font-size;
+  line-height: $h2-line-height;
+  font-weight: $font-weight-bold;
+}
+
+h3 {
+  font-size: $h3-font-size;
+  line-height: $h3-line-height;
+  font-weight: $font-weight-bold;
+}
+
+h4 {
+  font-size: $h4-font-size;
+}
+
+h5 {
+  font-size: $h5-font-size;
+}
+
+h6 {
+  font-size: $h6-font-size;
+}
+
+p {
+  font-size: $p-font-size;
+  font-weight: $font-weight-medium;
+}
+.front-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f8f9fa; // Light background color for contrast
+  background-image: url('../images/bg.webp');
+  padding: 20px;}
+
+.app-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f8f9fa; // Light background color for contrast
+  padding: 20px;}
+
+@for $i from 1 through 9 {
+  .font-weight-#{$i}00 {
+    font-weight: #{$i}00;
+  }
+}
+
+//Main layout
+
