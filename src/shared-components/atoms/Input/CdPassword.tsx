@@ -1,6 +1,6 @@
 import React, { CSSProperties, useState } from 'react';
 import { Button, FormFeedback, FormGroup, Input, InputGroup } from 'reactstrap';
-import { InputSizes } from '../../../types/enums/components/InputSizes';
+import { InputSizes } from "../../../types/enums/components/InputSizes.Enum";
 import CdInputLabel from '../Label/CdInputLabel';
 import { Variant } from '../../../types/enums/components/Variant';
 

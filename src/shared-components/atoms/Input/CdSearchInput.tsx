@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 import { Input, InputGroup, InputGroupText, Row } from 'reactstrap';
-import { InputSizes } from '../../../types/enums/components/InputSizes';
+import { InputSizes } from "../../../types/enums/components/InputSizes.Enum";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 

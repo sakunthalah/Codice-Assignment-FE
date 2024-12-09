@@ -18,7 +18,7 @@ import {
 import {
   AlignItems,
   JustifyContent,
-} from "../../types/enums/components/Container";
+} from "../../types/enums/components/Container.Enum";
 import { authService } from "../../services/api/AuthService";
 import { SignInDto } from "../../types/interface/request/signin-dto";
 import { Link, useNavigate } from "react-router-dom";
@@ -42,11 +42,9 @@ const SignIn: React.FC = () => {
         if (res.success) {
           authService.setLoginSession(res.data.data);
           setSignInResponseData(res.data.data);
-          localStorage.setItem("authToken", res.data.data);
-          navigate('/search-project');
-        }
-        else
-        {
+          localStorage.setItem("accessToken", res.data.data);
+          navigate("/dashboard");
+        } else {
           console.log("Login failed");
         }
       });

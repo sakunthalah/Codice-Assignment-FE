@@ -1,5 +1,8 @@
 import { Card, CardBody, CardImg, CardProps, CardSubtitle, CardText, CardTitle, Col, Row } from "reactstrap";
-import { JustifyContent, AlignItems } from '../../../types/enums/components/Container';
+import {
+  JustifyContent,
+  AlignItems,
+} from "../../../types/enums/components/Container.Enum";
 
 
 interface CdCardProps extends CardProps {

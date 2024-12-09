@@ -1,6 +1,6 @@
 import { FormFeedback, FormGroup, Input } from 'reactstrap';
 import CdInputLabel from '../Label/CdInputLabel';
-import { InputSizes } from '../../../types/enums/components/InputSizes';
+import { InputSizes } from "../../../types/enums/components/InputSizes.Enum";
 import { CSSProperties } from 'react';
 
 type DateInputProps = {

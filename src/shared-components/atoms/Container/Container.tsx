@@ -1,6 +1,10 @@
-import { FlexDirection, JustifyContent, AlignItems } from '../../../types/enums/components/Container';
-import React, { CSSProperties } from 'react';
-import { Container } from 'reactstrap';
+import {
+  FlexDirection,
+  JustifyContent,
+  AlignItems,
+} from "../../../types/enums/components/Container.Enum";
+import React, { CSSProperties } from "react";
+import { Container } from "reactstrap";
 
 type ContainerProps = {
   className?: string;
@@ -16,36 +20,36 @@ type ContainerProps = {
   style?: CSSProperties;
 };
 const CdContainer: React.FC<ContainerProps> = ({
-    className,
-    children,
-    backgroundColor,
-    width,
-    height,
-    flex,
-    flexDirection,
-    justifyContent,
-    alignItems,
-    gap,
-    style,
-  }) => {
-    return (
-      <Container 
-        className={className}
-        style={{
-          ...style,
-          display: flex ? 'flex' : undefined,
-          flexDirection: flexDirection,
-          justifyContent: justifyContent,
-          alignItems: alignItems,
-          width: width,
-          height: height,
-          backgroundColor: backgroundColor,
-          gap: gap,
-        }}
-      >
-        {children}
-      </Container>
-    );
-  };
-  
-  export default CdContainer;
+  className,
+  children,
+  backgroundColor,
+  width,
+  height,
+  flex,
+  flexDirection,
+  justifyContent,
+  alignItems,
+  gap,
+  style,
+}) => {
+  return (
+    <Container
+      className={className}
+      style={{
+        ...style,
+        display: flex ? "flex" : undefined,
+        flexDirection: flexDirection,
+        justifyContent: justifyContent,
+        alignItems: alignItems,
+        width: width,
+        height: height,
+        backgroundColor: backgroundColor,
+        gap: gap,
+      }}
+    >
+      {children}
+    </Container>
+  );
+};
+
+export default CdContainer;

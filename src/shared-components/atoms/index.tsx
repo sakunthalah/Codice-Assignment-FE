@@ -16,3 +16,5 @@ export { default as CdTableBody} from './Table/Body/CdTableBody';
 export { default as CdTableFooter}  from './Table/Footer/CdTableFooter';
 export { default as CdTableCell}  from './Table/Cell/CdTableCell';
 export { default as CdBarChart}  from './Chart/CdBarChart';
+export { default as CdNavs } from "./Navs/CdNavs";
+export { default as CdSideBar } from "./Sidebar/CdSidebar";
