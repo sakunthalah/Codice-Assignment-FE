@@ -13,25 +13,8 @@ import {
 } from "recharts";
 import { ChartData } from "../../../types/types/chart-data";
 
-// Define the type for our data
-// export type ChartData = {
-//   name: string;
-//   value: number;
-// };
-
-// Sample data for the chart
-// const data: ChartData[] = [
-//   { name: 'Page A', value: 400 },
-//   { name: 'Page B', value: 300 },
-//   { name: 'Page C', value: 200 },
-//   { name: 'Page D', value: 278 },
-//   { name: 'Page E', value: 189 },
-// ];
-
 type PieChartProps = {
   data: ChartData[];
-  //xAxisKey: string;
-  //yAxisKey: string;
 };
 
 const CdPieChart: React.FC<PieChartProps> = ({ data }) => {

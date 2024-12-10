@@ -11,14 +11,15 @@ import {
   Row,
   Form,
   FormGroup,
-  FormText,
   Label,
   CardTitle,
+  CardBody,
+  CardImg,
 } from "reactstrap";
 import {
   AlignItems,
   JustifyContent,
-} from "../../types/enums/components/Container";
+} from "../../types/enums/components/Container.Enum";
 import { authService } from "../../services/api/AuthService";
 import { SignInDto } from "../../types/interface/request/signin-dto";
 import { Link, useNavigate } from "react-router-dom";
@@ -36,17 +37,14 @@ const SignIn: React.FC = () => {
     };
   });
 
-  const SignInServiceCall = async (signInObj: SignInDto) => {
+  const signIn = async (signInObj: SignInDto) => {
     try {
       await authService.signIn(signInObj).then((res) => {
         if (res.success) {
           authService.setLoginSession(res.data.data);
           setSignInResponseData(res.data.data);
-          localStorage.setItem("authToken", res.data.data);
-          navigate('/search-project');
-        }
-        else
-        {
+          navigate("/dashboard");
+        } else {
           console.log("Login failed");
         }
       });
@@ -55,13 +53,13 @@ const SignIn: React.FC = () => {
     }
   };
 
-  const SignInSubmit = () => {
+  const signInSubmit = () => {
     const signInObj: SignInDto = {
       email: email,
       password: password,
     };
 
-    SignInServiceCall(signInObj);
+    signIn(signInObj);
   };
 
   return (
@@ -69,56 +67,65 @@ const SignIn: React.FC = () => {
       alignItems={AlignItems.center}
       justifyContent={JustifyContent.center}
       className="front-container"
-    >
-      <CdCard
-        cardTitle="Login to Access Department Dashboard"
-        cardSubtitle="Login below to access your dashboard"
-        cardImageLink="../../img/dc-gov.webp"
-        children={
-          <Form>
-            <FormGroup>
-              <Label for="UserName" style={{ fontWeight: "bold" }}>
-                Username
-              </Label>
-              <CdEmailInput
-                id="email"
-                placeHolder="username@email.com"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="Password" style={{ fontWeight: "bold" }}>
-                Password
-              </Label>
-              <CdPasswordInput
-                id="examplePassword"
-                placeHolder="Enter your Password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
-            </FormGroup>
-            <FormGroup className="d-flex align-items-center justify-content-center">
-              <Row>
-                <CdButton
-                  onClick={() => SignInSubmit()}
-                  type="button"
-                  text="Sign In"
+      children={
+        <CdCard>
+          <CardBody>
+            <div style={{ width: "wd-100" }}>
+              <Row style={{ width: "wd-100" }}>
+                <Col style={{ width: "wd-40" }}>
+                  <CardTitle tag="h6" className="mb-8 text-muted text-center">
+                    Login to Access Department Dashboard
+                  </CardTitle>
+                  <CardTitle className="mb-8 text-muted text-center">
+                    Login below to access your Dashboard
+                  </CardTitle>
+                </Col>
+              </Row>
+            </div>
+            <Form>
+              <FormGroup>
+                <Label for="UserName" style={{ fontWeight: "bold" }}>
+                  Username
+                </Label>
+                <CdEmailInput
+                  id="email"
+                  placeHolder="username@email.com"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
-              </Row>
-            </FormGroup>
-            <FormGroup className="d-flex align-items-center justify-content-center">
-              <Row>
-                {/* <FormText check>Forgot your username or password?</FormText> */}
-                <Link to="/dashboard"> Forgot your username or password?</Link>
-              </Row>
-            </FormGroup>
-          </Form>
-        }
-      />
-    </CdContainer>
+              </FormGroup>
+              <FormGroup>
+                <Label for="Password" style={{ fontWeight: "bold" }}>
+                  Password
+                </Label>
+                <CdPasswordInput
+                  id="examplePassword"
+                  placeHolder="Enter your Password"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+              </FormGroup>
+              <FormGroup className="d-flex align-items-center justify-content-center">
+                <Row>
+                  <CdButton
+                    onClick={() => signInSubmit()}
+                    type="button"
+                    text="Sign In"
+                  />
+                </Row>
+              </FormGroup>
+              <FormGroup className="d-flex align-items-center justify-content-center">
+                <Row>
+                  <Link to="/"> Forgot your username or password?</Link>
+                </Row>
+              </FormGroup>
+            </Form>
+          </CardBody>
+        </CdCard>
+      }
+    />
   );
 };
 export default SignIn;

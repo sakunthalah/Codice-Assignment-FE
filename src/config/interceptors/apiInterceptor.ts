@@ -1,3 +1,4 @@
+
 import axios, { AxiosInstance } from 'axios';
 
 export class ApiInterceptor {
@@ -7,7 +8,6 @@ export class ApiInterceptor {
 
   private constructor() {
     this.initRequest();
-    this.initResponse();
   }
 
   public static getInstance(): ApiInterceptor {
@@ -24,35 +24,11 @@ export class ApiInterceptor {
   private initRequest() {
     this.axios.interceptors.request.use(
       async (config) => {
-        if (this.getAccessToken) {
-          try {
-            const token = await this.getAccessToken();
-            if (token) {
-              config.headers["Authorization"] = `Bearer ${token}`;
-            }
-            config.headers["x-origin-strategy"] = "public-portal"; // this header is using in BFF to identify the request origin (department portal or client portal). This is static value.
-          } catch (error) {
-            console.error("Error retrieving token:", error); // need to remove after finalized the MSAL integration
-          }
-        }
-
+        config.headers["Authorization"] = `Bearer ${localStorage.getItem("accessToken")}`;
         return config;
       },
       (error) => {
         return Promise.reject(new Error(error));
-      },
-    );
-  }
-
-  private initResponse() {
-    this.axios.interceptors.response.use(
-      (response) => {
-        return response;
-      },
-      (error) => {
-        //Global response error handling
-        
-        return Promise.reject(error);
       },
     );
   }

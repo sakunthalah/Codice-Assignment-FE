@@ -1,6 +1,6 @@
 import React, { CSSProperties, useState, useEffect } from 'react';
 import { FormFeedback, FormGroup, Input } from 'reactstrap';
-import { InputSizes } from '../../../types/enums/components/InputSizes';
+import { InputSizes } from "../../../types/enums/components/InputSizes.Enum";
 import CdInputLabel from '../Label/CdInputLabel';
 
 export type OptionType = {

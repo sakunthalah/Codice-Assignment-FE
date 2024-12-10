@@ -6,14 +6,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-  <BrowserRouter>
-   <Routes>
-      <Route path="/" element={<SignIn />} />
-      <Route path="/search-project" element={<SearchProject />} />
-      <Route path="/dashboard" element={<MpsDashboard />} />
-    </Routes>
-    
-  </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SignIn />} />
+        <Route path="/search-project" element={<SearchProject />} />
+        <Route path="/dashboard" element={<MpsDashboard />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

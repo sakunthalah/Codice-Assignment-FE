@@ -11,7 +11,7 @@ class ProjectService extends CoreService {
       ): Promise<{ message: string; success: boolean; data: any }> => {
         return new Promise((resolve, reject) => {
           this.axios
-            .post(`${globalAppConfig.baseApiUrl}/project/getPaginatedList`, projectDetails)
+            .post(`${globalAppConfig.baseApiUrl}/project/paginated`, projectDetails)
             .then(async (response: any) => {
               const { success, message, data } = response.data;
               resolve({ message, success, data });
@@ -25,7 +25,7 @@ class ProjectService extends CoreService {
       getProjectList = async (): Promise<{ message: string; success: boolean; data: any }> => {
         return new Promise((resolve, reject) => {
           this.axios
-            .get(`${globalAppConfig.baseApiUrl}/project/getList`)
+            .get(`${globalAppConfig.baseApiUrl}/project/list`)
             .then(async (response: any) => {
               const { success, message, data } = response.data;
               resolve({ message, success, data });

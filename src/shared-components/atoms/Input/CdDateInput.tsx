@@ -1,7 +1,7 @@
-import { FormFeedback, FormGroup, Input } from 'reactstrap';
-import CdInputLabel from '../Label/CdInputLabel';
-import { InputSizes } from '../../../types/enums/components/InputSizes';
-import { CSSProperties } from 'react';
+import { FormFeedback, FormGroup, Input } from "reactstrap";
+import CdInputLabel from "../Label/CdInputLabel";
+import { InputSizes } from "../../../types/enums/components/InputSizes.Enum";
+import { CSSProperties } from "react";
 
 type DateInputProps = {
   id: string;
@@ -40,7 +40,14 @@ const CdDateInput: React.FC<DateInputProps> = ({
 }) => {
   return (
     <FormGroup className="form-group">
-      {label && <CdInputLabel labelText={label} size={size} required={required} id={id} />}
+      {label && (
+        <CdInputLabel
+          labelText={label}
+          size={size}
+          required={required}
+          id={id}
+        />
+      )}
       <Input
         aria-label={id}
         id={id}
