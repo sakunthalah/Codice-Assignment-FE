@@ -1,5 +1,5 @@
 import React from 'react';
-import SignIn from './modules/signin/SignIn';
+import SignIn from "./modules/auth/SignIn";
 import SearchProject from './modules/project/SearchProject';
 import MpsDashboard from './modules/dashboard/Dashboard';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
