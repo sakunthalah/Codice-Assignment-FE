@@ -42,7 +42,7 @@ class AuthService extends CoreService {
   getUserDetails = async (): Promise<{ message: string; success: boolean; data: any }> => {
     return new Promise((resolve, reject) => {
       this.axios
-        .get(`${globalAppConfig.baseApiUrl}/auth/getUserList`)
+        .get(`${globalAppConfig.baseApiUrl}/auth/list`)
         .then(async (response: any) => {
           const { success, message, data } = response.data;
           resolve({ message, success, data });
