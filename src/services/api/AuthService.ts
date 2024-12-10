@@ -18,7 +18,7 @@ class AuthService extends CoreService {
   ): Promise<{ message: string; success: boolean; data: any }> => {
     return new Promise((resolve, reject) => {
       this.axios
-        .post(`${globalAppConfig.baseApiUrl}/auth/login`, signInDetails)
+        .post(`${globalAppConfig.baseApiUrl}/auth/signIn`, signInDetails)
         .then(async (response: any) => {
           const { success, message, data } = response.data;
           resolve({ message, success, data });
@@ -30,7 +30,7 @@ class AuthService extends CoreService {
   };
 
   setLoginSession(token: string): void {
-    localStorage.setItem('lg_tk', token);
+    localStorage.setItem('accessToken', token);
     const tokenPayload = this.decodeToken(token);
     this.emailAddress = tokenPayload.email;
   }
