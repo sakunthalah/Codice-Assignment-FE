@@ -12,29 +12,20 @@ import {
 } from "../../shared-components/atoms";
 import { Col, Row } from "reactstrap";
 import {
-  AlignItems,
-  JustifyContent,
-} from "../../types/enums/components/Container.Enum";
-import {
   ProjectStatus,
   StatusColors,
 } from "../../types/constants/project/project-status";
-import { CdDataTable, CdDataGrid } from "../../shared-components/organisms";
-import { projectListHeader } from "../../types/constants/project/project-list-headder";
+import { CdDataGrid } from "../../shared-components/organisms";
 import { projectService } from "../../services/api/ProjectService";
 import { ProjectRequestDto } from "../../types/interface/request/project-dto";
 import { ProjectDataResponseDto } from "../../types/interface/response/project-response-dto";
-import { text } from "stream/consumers";
 import { authService } from "../../services/api/AuthService";
 import {
   UserOption,
   UserResponseDto,
 } from "../../types/interface/response/user-response-dto";
-import { CdPageTemplate, CdPageTitle } from "../../shared-components/templates";
-import {
-  ButtonTypes,
-  ButtonVariant,
-} from "../../types/enums/components/Button.Enum";
+import { CdPageTemplate } from "../../shared-components/templates";
+import { Variant } from "../../types/enums/components/Variant";
 
 const SearchProject: React.FC = () => {
   const [projectResponseData, setProjectResponseData] =
@@ -49,13 +40,9 @@ const SearchProject: React.FC = () => {
   const [startDate, setStartDate] = useState<string | undefined>(undefined);
   const [endDate, setEndDate] = useState<string | undefined>(undefined);
   const [pageSize, setPageSize] = useState<number>(5);
-  const [paginationModel, setPaginationModel] = React.useState({
-    pageSize: pageSize,
-    page: 1,
-  });
-  useEffect(() => {
-    GetUserData();
 
+  useEffect(() => {
+    getUserData();
     const projObj: ProjectRequestDto = {
       data: {
         projectName: "",
@@ -69,10 +56,10 @@ const SearchProject: React.FC = () => {
         pageSize: pageSize.toString(),
       },
     };
-    GetProjectData(projObj);
+    getProjectData(projObj);
   }, []);
 
-  const GetProjectData = async (projObj: ProjectRequestDto) => {
+  const getProjectData = async (projObj: ProjectRequestDto) => {
     try {
       await projectService.getProjectPaginatedList(projObj).then((res) => {
         if (res.success) {
@@ -85,7 +72,7 @@ const SearchProject: React.FC = () => {
     }
   };
 
-  const GetUserData = async () => {
+  const getUserData = async () => {
     try {
       await authService.getUserDetails().then((res) => {
         if (res.success) {
@@ -103,7 +90,7 @@ const SearchProject: React.FC = () => {
     value: user.name,
   }));
 
-  const SearchProjectData = () => {
+  const searchProjectData = () => {
     const projObj: ProjectRequestDto = {
       data: {
         projectName: projectName,
@@ -117,19 +104,18 @@ const SearchProject: React.FC = () => {
         pageSize: pageSize.toString(),
       },
     };
-    GetProjectData(projObj);
+    getProjectData(projObj);
   };
 
-  const SetTableData = (data: any[]) => {
+  const setTableData = (data: any[]) => {
     const tempData: any[] = [];
     data.forEach((project: any) => {
-      //tempData.push([...Object.values(item)]);
       tempData.push({
         id: project.id,
         projectName: project.projectName,
         status: project.status,
-        startDate: project.startDate, //new Date(project.projectStartDate).toISOString().slice(0, 10),
-        endDate: project.endDate, //new Date(project.projectEndDate).toISOString().slice(0, 10),
+        startDate: project.startDate,
+        endDate: project.endDate,
         createdBy: project.createdBy,
         budget: project.budget.toLocaleString(),
       });
@@ -212,10 +198,10 @@ const SearchProject: React.FC = () => {
             </Col>
             <Col sm={1}>
               <CdButton
-                onClick={() => SearchProjectData()}
+                onClick={() => searchProjectData()}
                 type="button"
                 text="Search"
-                color="blue"
+                color={Variant.info}
               />
             </Col>
           </Row>
@@ -244,7 +230,7 @@ const SearchProject: React.FC = () => {
                   renderCell: (params) => (
                     <CdButton
                       color={StatusColors(params.value)}
-                      borderradius="1"
+                      borderradius="4rex"
                       size="sm"
                     >
                       {params.value}
@@ -252,7 +238,7 @@ const SearchProject: React.FC = () => {
                   ),
                 },
               ]}
-              rows={SetTableData(projectResponseData?.data ?? [])}
+              rows={setTableData(projectResponseData?.data ?? [])}
               pagination={true}
               pageSizeOptions={[5, 10, 25, 100]}
               initialState={{

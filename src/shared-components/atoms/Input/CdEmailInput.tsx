@@ -1,7 +1,7 @@
-import React, { CSSProperties } from 'react';
-import { FormFeedback, FormGroup, Input } from 'reactstrap';
+import React, { CSSProperties } from "react";
+import { FormFeedback, FormGroup, Input } from "reactstrap";
 import { InputSizes } from "../../../types/enums/components/InputSizes.Enum";
-import CdInputLabel from '../Label/CdInputLabel'
+import CdInputLabel from "../Label/CdInputLabel";
 
 type EmailInputProps = {
   id: string;
@@ -42,7 +42,14 @@ const CdEmailInput: React.FC<EmailInputProps> = ({
 }) => {
   return (
     <FormGroup className="form-group">
-      {label && <CdInputLabel labelText={label} size={size} required={required} id={id} />}
+      {label && (
+        <CdInputLabel
+          labelText={label}
+          size={size}
+          required={required}
+          id={id}
+        />
+      )}
       <Input
         aria-label={id}
         id={id}

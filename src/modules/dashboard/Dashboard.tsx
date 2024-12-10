@@ -1,36 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { CdBarChart, CdCard, CdContainer } from "../../shared-components/atoms";
-import {
-  AlignItems,
-  JustifyContent,
-} from "../../types/enums/components/Container.Enum";
-import { CdPageTemplate, CdPageTitle } from "../../shared-components/templates";
-import {
-  Card,
-  CardBody,
-  CardText,
-  CardTitle,
-  Col,
-  Form,
-  Row,
-} from "reactstrap";
+import { CdBarChart, CdCard } from "../../shared-components/atoms";
+import { JustifyContent } from "../../types/enums/components/Container.Enum";
+import { CdPageTemplate } from "../../shared-components/templates";
+import { CardBody, CardText, CardTitle, Col, Row } from "reactstrap";
 import { ProjectDataResponseDto } from "../../types/interface/response/project-response-dto";
-import { UserResponseDto } from "../../types/interface/response/user-response-dto";
 import { projectService } from "../../services/api/ProjectService";
 import { ChartData } from "../../types/types/chart-data";
-import CdPieChart from "../../shared-components/atoms/Chart/CdPieChart";
 
 const MpsDashboard: React.FC = () => {
-  //const [chartData, setChartData] =useState([]);
   const [projCount, setProjCount] = useState<number>(0);
   const [projectResponseData, setProjectResponseData] = useState<
     ProjectDataResponseDto[]
   >([]);
-  const [userResponseData, setUserResponseData] = useState<UserResponseDto[]>(
-    []
-  );
 
-  const GetProjectData = async () => {
+  const getProjectData = async () => {
     try {
       await projectService.getProjectList().then((res) => {
         if (res.success) {
@@ -44,21 +27,10 @@ const MpsDashboard: React.FC = () => {
   };
 
   useEffect(() => {
-    GetProjectData();
+    getProjectData();
   }, []);
 
-  const SetBarChartData = (data: ProjectDataResponseDto[]) => {
-    const tempData: ChartData[] = [];
-    data.forEach((project: any) => {
-      tempData.push({
-        value: project.budget,
-        name: project.projectName,
-      });
-    });
-    return tempData;
-  };
-
-  const SetPieChartData = (data: ProjectDataResponseDto[]) => {
+  const setBarChartData = (data: ProjectDataResponseDto[]) => {
     const tempData: ChartData[] = [];
     data.forEach((project: any) => {
       tempData.push({
@@ -109,24 +81,14 @@ const MpsDashboard: React.FC = () => {
                       </CardBody>
                     </Col>
                     <Col md={6}>
-                      {/* <CdPieChart
-                        data={SetPieChartData(projectResponseData)}
-                      ></CdPieChart> */}
                       <CdBarChart
-                        data={SetBarChartData(projectResponseData)}
+                        data={setBarChartData(projectResponseData)}
                       ></CdBarChart>
                     </Col>
                   </Row>
                 </div>
               </CdCard>
             </Col>
-            {/* <Col md={6}>
-              <Card>
-                <CdPieChart
-                  data={SetPieChartData(projectResponseData)}
-                ></CdPieChart>
-              </Card>
-            </Col> */}
           </Row>
         </div>
       }

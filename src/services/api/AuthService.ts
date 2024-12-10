@@ -1,10 +1,10 @@
-import globalAppConfig from '../../config/global-app-config'; 
+import globalAppConfig from '../../config/global-app-config';
 import { SignInDto } from '../../types/interface/request/signin-dto';
 import { jwtDecode } from 'jwt-decode';
 import { CoreService } from './CoreService';
 
 class AuthService extends CoreService {
-  
+
   set emailAddress(value: string) {
     localStorage.setItem('ps_uml', value);
   }
@@ -34,12 +34,12 @@ class AuthService extends CoreService {
     const tokenPayload = this.decodeToken(token);
     this.emailAddress = tokenPayload.email;
   }
-  
-   decodeToken = (token: string): any => {
+
+  decodeToken = (token: string): any => {
     return jwtDecode(token);
   };
-  
-  getUserDetails = async ( ): Promise<{ message: string; success: boolean; data: any }> => {
+
+  getUserDetails = async (): Promise<{ message: string; success: boolean; data: any }> => {
     return new Promise((resolve, reject) => {
       this.axios
         .get(`${globalAppConfig.baseApiUrl}/auth/getUserList`)
